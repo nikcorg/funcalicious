@@ -1,0 +1,32 @@
+{
+  "name": "funcalicious",
+  "version": "0.1.0",
+  "description": "Funcalicious, because it functional, funky and delicious.",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tape test/**.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nikcorg/funcalicious.git"
+  },
+  "keywords": [
+    "functional",
+    "composable",
+    "compose",
+    "utility",
+    "util",
+    "toolbox"
+  ],
+  "author": "Niklas Lindgren",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nikcorg/funcalicious/issues"
+  },
+  "homepage": "https://github.com/nikcorg/funcalicious",
+  "devDependencies": {
+    "tape": "~3.0.3"
+  }
+}
