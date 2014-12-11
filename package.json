@@ -27,7 +27,8 @@
   },
   "homepage": "https://github.com/nikcorg/funcalicious",
   "devDependencies": {
-    "tape": "~3.0.3"
+    "tape": "~3.0.3",
+    "sinon": "~1.12.1"
   },
   "dependencies": {
     "debug": "~2.1.0"
