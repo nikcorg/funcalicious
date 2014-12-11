@@ -4,6 +4,14 @@
 
 [![Code Climate](https://codeclimate.com/github/nikcorg/funcalicious/badges/gpa.svg)](https://codeclimate.com/github/nikcorg/funcalicious)
 
+## Funky projects
+
+- [Snake](https://github.com/nikcorg/snake)
+
+## TODO
+
+- add examples to readme
+
 # License
 
 The MIT License (MIT)
