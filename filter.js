@@ -29,6 +29,9 @@ function filter(terms) {
             case "$gte":
                 test = not(lessthan(term));
                 break;
+            case "$in":
+                test = contains(term);
+                break;
             }
 
             return test;
@@ -56,5 +59,15 @@ function equals(what) {
 function lessthan(what) {
     return function (i) {
         return i < what;
+    };
+}
+
+function contains(what) {
+    if (! Array.isArray(what)) {
+        throw new Error("$in only works for arrays");
+    }
+
+    return function (i) {
+        return what.indexOf(i) > -1;
     };
 }

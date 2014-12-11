@@ -66,6 +66,23 @@ test("filter", function (t) {
         t.notOk(gte(2));
     });
 
+    t.test("$in", function (t) {
+        t.plan(2);
+
+        var exists = filter({ $in: [1, 3, 7] });
+
+        t.ok(exists(1));
+        t.notOk(exists(2));
+    });
+
+    t.test("$in throws for invalid input", function (t) {
+        t.plan(1);
+
+        t.throws(function () {
+            filter({ $in: "string" });
+        });
+    });
+
     t.test("is composeable", function (t) {
         t.plan(3);
         var test = filter({ $gt: 2, $lt: 5 });
