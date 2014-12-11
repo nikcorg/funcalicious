@@ -1,4 +1,4 @@
-var debug = require("debug")("randomize");
+var debug = require("debug")("funcalicious:randomize");
 
 module.exports = randomize.randomize = randomize;
 

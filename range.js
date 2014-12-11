@@ -1,4 +1,4 @@
-var debug = require("debug")("range");
+var debug = require("debug")("funcalicious:range");
 var sign = require("./sign");
 
 module.exports = range.range = range;
