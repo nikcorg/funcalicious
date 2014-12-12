@@ -30,6 +30,8 @@ function callFunction(fn, _args) {
                 return fn(args[0], args[1]);
             case 1:
                 return fn(args[0]);
+            case 0:
+                return fn();
         }
 
         return fn.apply(undefined, args);
