@@ -1,5 +1,11 @@
 var debug = require("debug")("funcalicious:filter");
 
+var contains = require("./contains");
+var lessthan = require("./lessthan");
+var flatmap = require("./flatmap");
+var equals = require("./equals");
+var always = require("./always");
+var equal = require("./equals");
 var not = require("./not");
 var and = require("./and");
 var or = require("./or");
@@ -7,10 +13,19 @@ var or = require("./or");
 module.exports = filter.filter = filter;
 
 function filter(terms) {
-    var tests = Object.keys(terms).
-        map(function (op) {
+    if (! Array.isArray(terms)) {
+        throw new Error("filter expects an array of terms");
+    }
+
+    if (terms.length < 1) {
+        return always(true);
+    }
+
+    var test;
+    var tests = flatmap(terms, function (_term) {
+        return Object.keys(_term).map(function (op) {
             var test;
-            var term = terms[op];
+            var term = _term[op];
 
             switch (op) {
             case "$eq":
@@ -41,6 +56,7 @@ function filter(terms) {
 
             return test;
         });
+    });
 
     if (tests.length > 1) {
         test = tests.reduce(function (acc, test) {
@@ -52,27 +68,5 @@ function filter(terms) {
 
     return function (i) {
         return test(i);
-    };
-}
-
-function equals(what) {
-    return function (i) {
-        return i == what;
-    };
-}
-
-function lessthan(what) {
-    return function (i) {
-        return i < what;
-    };
-}
-
-function contains(what) {
-    if (! Array.isArray(what)) {
-        throw new Error("$in only works for arrays");
-    }
-
-    return function (i) {
-        return what.indexOf(i) > -1;
     };
 }
