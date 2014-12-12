@@ -1,3 +1,5 @@
+var debug = require("debug")("funcalicious:filter");
+
 var not = require("./not");
 var and = require("./and");
 var or = require("./or");
@@ -31,6 +33,9 @@ function filter(terms) {
                 break;
             case "$in":
                 test = contains(term);
+                break;
+            default:
+                debug("unknown operator: %s", op);
                 break;
             }
 
