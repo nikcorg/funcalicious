@@ -17,7 +17,8 @@ function call(method) {
                 case 1:
                     return o[method](args[0]);
             }
-            return o[method].apply(undefined, args);
+
+            return o[method].apply(o, args);
         };
     }
 
