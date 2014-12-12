@@ -49,7 +49,7 @@ test("call", function (t) {
         t.ok(fn.calledWith(1, 2));
     });
 
-    t.test("function receives iterator arguments", function (t) {
+    t.test("function receives call time arguments", function (t) {
         t.plan(1);
         var fn = sinon.spy();
         call(fn)(3, 4);
