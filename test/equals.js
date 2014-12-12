@@ -1,5 +1,5 @@
 var test = require("tape");
-var equals = require("equals");
+var equals = require("../equals");
 
 test("equals", function (t) {
     t.test("exports function", function (t) {
