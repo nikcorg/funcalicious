@@ -2,10 +2,14 @@ var test = require("tape");
 var rand = require("../randomize");
 
 test("randomize", function (t) {
-    t.test("exports", function (t) {
-        t.plan(2);
-        t.equal(typeof rand, "function", "exports function");
-        t.equal(typeof rand.randomize, "function", "exports redundant api");
+    t.test("exports function", function (t) {
+        t.plan(1);
+        t.equal(typeof rand, "function");
+    });
+
+    t.test("exports redundant api", function (t) {
+        t.plan(1);
+        t.ok(rand.randomize === rand);
     });
 
     t.test("simple random", function (t) {

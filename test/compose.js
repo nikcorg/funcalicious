@@ -2,10 +2,14 @@ var test = require("tape");
 var compose = require("../compose");
 
 test("compose", function (t) {
-    t.test("exports", function (t) {
-        t.plan(2);
-        t.equal(typeof compose, "function", "exports function");
-        t.equal(typeof compose.compose, "function", "exports redundant api");
+    t.test("exports function", function (t) {
+        t.plan(1);
+        t.equal(typeof compose, "function");
+    });
+
+    t.test("exports redundant api", function (t) {
+        t.plan(1);
+        t.ok(compose.compose === compose);
     });
 
     t.test("composition", function (t) {

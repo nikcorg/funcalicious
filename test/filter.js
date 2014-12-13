@@ -2,14 +2,19 @@ var test = require("tape");
 var filter = require("../filter");
 
 test("filter", function (t) {
-    t.test("exports a function", function (t) {
+    t.test("exports function", function (t) {
         t.plan(1);
         t.equal(typeof filter, "function");
     });
 
-    t.test("exports a redundant api", function (t) {
+    t.test("exports redundant api", function (t) {
         t.plan(1);
-        t.equal(typeof filter.filter, "function");
+        t.ok(filter.filter === filter);
+    });
+
+    t.test("returns function", function (t) {
+        t.plan(1);
+        t.equal(typeof filter([]), "function");
     });
 
     t.test("throws for invalid input", function (t) {

@@ -1,28 +1,32 @@
 var test = require("tape");
-var sel = require("../sample");
+var sample = require("../sample");
 
 test("sample", function (t) {
     t.test("exports", function (t) {
-        t.plan(2);
-        t.equal(typeof sel, "function", "exports function");
-        t.equal(typeof sel.sample, "function", "exports redundant api");
+        t.plan(1);
+        t.equal(typeof sample, "function", "exports function");
+    });
+
+    t.test("exports redundant api", function (t) {
+        t.plan(1);
+        t.ok(sample.sample === sample);
     });
 
     t.test("callback invoked", function (t) {
         t.plan(1);
-        sel([1, 2, 3], t.pass);
+        sample([1, 2, 3], t.pass);
     });
 
     t.test("single item", function (t) {
         t.plan(1);
-        sel([1], function (n) {
+        sample([1], function (n) {
             t.equal(n, 1, "single item selected");
         });
     });
 
     t.test("callback not invoked", function (t) {
         t.plan(1);
-        sel([], t.fail.bind(t, "should not be invoked"));
+        sample([], t.fail.bind(t, "should not be invoked"));
         t.pass("callback was never invoked");
     });
 });

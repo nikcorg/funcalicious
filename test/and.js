@@ -2,10 +2,19 @@ var test = require("tape");
 var and = require("../and");
 
 test("and", function (t) {
-    t.test("export", function (t) {
-        t.plan(2);
-        t.equal(typeof and, "function", "exports function");
-        t.equal(typeof and.and, "function", "exports redundant api");
+    t.test("exports function", function (t) {
+        t.plan(1);
+        t.equal(typeof and, "function");
+    });
+
+    t.test("exports redundant api", function (t) {
+        t.plan(1);
+        t.ok(and.and === and);
+    });
+
+    t.test("returns function", function (t) {
+        t.plan(1);
+        t.equal(typeof and(), "function");
     });
 
     t.test("input is passed", function (t) {

@@ -10,7 +10,12 @@ test("tee", function (t) {
 
     t.test("exports redundant api", function (t) {
         t.plan(1);
-        t.equal(typeof tee.tee, "function");
+        t.ok(tee.tee === tee);
+    });
+
+    t.test("returns function", function (t) {
+        t.plan(1);
+        t.equal(typeof tee(), "function");
     });
 
     t.test("calls all functions", function (t) {

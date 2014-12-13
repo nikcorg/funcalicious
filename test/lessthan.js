@@ -9,8 +9,8 @@ test("lessthan", function (t) {
 
     t.test("exports redundant api", function (t) {
         t.plan(2);
-        t.equal(typeof lessthan.lessthan, "function");
-        t.equal(typeof lessthan.lessThan, "function");
+        t.ok(lessthan.lessthan === lessthan);
+        t.ok(lessthan.lessThan === lessthan);
     });
 
     t.test("returns function", function (t) {

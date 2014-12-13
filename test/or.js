@@ -10,7 +10,12 @@ test("or", function (t) {
 
     t.test("exports redundant api", function (t) {
         t.plan(1);
-        t.equal(typeof or.or, "function");
+        t.ok(or.or === or);
+    });
+
+    t.test("returns function", function (t) {
+        t.plan(1);
+        t.equal(typeof or(), "function");
     });
 
     t.test("right is not called when left is true", function (t) {

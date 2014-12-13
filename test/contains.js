@@ -9,7 +9,7 @@ test("contains", function (t) {
 
     t.test("exports redundant api", function (t) {
         t.plan(1);
-        t.equal(typeof contains.contains, "function");
+        t.ok(contains.contains === contains);
     });
 
     t.test("returns function", function (t) {

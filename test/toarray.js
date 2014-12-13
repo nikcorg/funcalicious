@@ -2,14 +2,19 @@ var test = require("tape");
 var toa = require("../toarray");
 
 test("toarray", function (t) {
-    t.test("exports", function (t) {
-        t.plan(5);
+    t.test("exports function", function (t) {
+        t.plan(1);
         t.equal(typeof toa, "function", "exports function");
-        t.equal(typeof toa.toa, "function", "exports redundant api");
-        t.equal(typeof toa.toA, "function", "exports redundant api");
-        t.equal(typeof toa.toArray, "function", "exports redundant api");
-        t.equal(typeof toa.toarray, "function", "exports redundant api");
     });
+
+    t.test("exports redundant api", function (t) {
+        t.plan(4);
+        t.ok(toa.toa === toa);
+        t.ok(toa.toA === toa);
+        t.ok(toa.toArray === toa);
+        t.ok(toa.toarray === toa);
+    });
+
     t.test("arraylike", function (t) {
         t.plan(3);
         var arraylike = { length: 10 };

@@ -3,9 +3,13 @@ var range = require("../range");
 
 test("range", function (t) {
     t.test("exports", function (t) {
-        t.plan(2);
+        t.plan(1);
         t.equal(typeof range, "function", "exports function");
-        t.equal(typeof range.range, "function", "exports redundant api");
+    });
+
+    t.test("exports redundant api", function (t) {
+        t.plan(1);
+        t.ok(range.range === range);
     });
 
     t.test("from zero", function (t) {

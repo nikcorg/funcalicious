@@ -9,9 +9,14 @@ test("call", function (t) {
     });
 
     t.test("exports redundant api", function (t) {
-        t.plan(2);
-        t.equal(typeof call.call, "function");
+        t.plan(1);
         t.ok(call.call === call);
+    });
+
+    t.test("returns function", function (t) {
+        t.plan(2);
+        t.equal(typeof call("foo"), "function");
+        t.equal(typeof call(sinon.spy()), "function");
     });
 
     t.test("invokes method", function (t) {

@@ -8,9 +8,8 @@ test("equals", function (t) {
     });
 
     t.test("exports redundant api", function (t) {
-        t.plan(2);
-        t.equal(typeof equals.equals, "function");
-        t.ok(equals === equals.equals);
+        t.plan(1);
+        t.ok(equals.equals === equals);
     });
 
     t.test("returns function", function (t) {
