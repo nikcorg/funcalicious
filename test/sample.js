@@ -29,4 +29,10 @@ test("sample", function (t) {
         sample([], t.fail.bind(t, "should not be invoked"));
         t.pass("callback was never invoked");
     });
+
+    t.test("return without callback", function (t) {
+        t.plan(2);
+        t.equal(sample([1]), 1);
+        t.equal(typeof sample([1, 2, 3, 4]), "number");
+    });
 });
