@@ -1,6 +1,6 @@
 {
   "name": "funcalicious",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Funcalicious, because it functional, funky and delicious.",
   "directories": {
     "test": "test"
