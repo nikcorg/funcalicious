@@ -41,4 +41,38 @@ test("range", function (t) {
         t.equal(r.shift(), 10, "head check");
         t.equal(r.pop(), 1, "tail check");
     });
+
+    t.test("custom step", function (t) {
+        t.plan(3);
+
+        var r = range(0, 10, 2);
+
+        t.equal(5, r.length, "length check");
+        t.equal(r.pop(), 8, "tail check");
+        t.equal(r.shift(), 0, "head check");
+    });
+
+    t.test("custom negative step", function (t) {
+        t.plan(3);
+
+        var r = range(15, 0, -3);
+
+        t.equal(5, r.length, "length check");
+        t.equal(r.pop(), 3, "tail check");
+        t.equal(r.shift(), 15, "head check");
+    });
+
+    t.test("invalid step sign throws", function (t) {
+        t.plan(1);
+        t.throws(function () {
+            range(15, 0, 3);
+        });
+    });
+
+    t.test("invalid step size throws", function (t) {
+        t.plan(1);
+        t.throws(function () {
+            range(0, 10, 3);
+        });
+    });
 });
