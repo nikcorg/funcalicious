@@ -1,3 +1,5 @@
+"use strict";
+
 var slice = Array.prototype.slice;
 
 module.exports = toarray.toarray = toarray.toArray = toarray.toA = toarray.toa = toarray;

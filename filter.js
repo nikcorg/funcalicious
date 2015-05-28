@@ -1,3 +1,5 @@
+"use strict";
+
 var debug = require("debug")("funcalicious:filter");
 
 var contains = require("./contains");

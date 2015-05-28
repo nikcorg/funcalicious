@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = put.put = put;
 
 function put(prop, val) {

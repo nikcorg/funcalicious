@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = lessthan.lessthan = lessthan.lessThan = lessthan;
 
 function lessthan(what) {

@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = contains.contains = contains;
 
 function contains(what) {

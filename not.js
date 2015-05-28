@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = not.not = not;
 
 function not(fn) {

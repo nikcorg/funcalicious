@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = flatmap.flatmap = flatmap.flatMap = flatmap;
 
 function flatten(arr) {

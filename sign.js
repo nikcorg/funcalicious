@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = sign.sign = sign;
 
 function sign(n) {

@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = pad.pad = pad;
 
 function pad(input, width, padding, right) {
