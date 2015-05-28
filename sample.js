@@ -1,3 +1,5 @@
+"use strict";
+
 var randomize = require("./randomize");
 
 module.exports = sample.sample = sample;

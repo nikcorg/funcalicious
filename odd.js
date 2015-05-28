@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = odd.odd = odd;
 
 function odd(n) {

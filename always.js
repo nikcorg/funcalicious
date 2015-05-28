@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = always.always = always;
 
 function always(val) {

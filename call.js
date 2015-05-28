@@ -1,3 +1,5 @@
+"use strict";
+
 var toarray = require("./toarray");
 
 module.exports = call.call = call;

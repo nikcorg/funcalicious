@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = and.and = and;
 
 function and(left, right) {

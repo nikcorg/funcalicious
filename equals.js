@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = equals.equals = equals;
 
 function equals(what, strict) {

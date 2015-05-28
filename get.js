@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = get.get = get;
 
 function get(prop) {

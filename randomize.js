@@ -1,3 +1,5 @@
+"use strict";
+
 var debug = require("debug")("funcalicious:randomize");
 
 module.exports = randomize.randomize = randomize;
