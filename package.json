@@ -27,11 +27,11 @@
   },
   "homepage": "https://github.com/nikcorg/funcalicious",
   "devDependencies": {
-    "tape": "~3.0.3",
-    "sinon": "~1.12.1"
+    "sinon": "^1.14.1",
+    "tape": "^4.0.0"
   },
   "dependencies": {
-    "debug": "~2.1.0"
+    "debug": "^2.2.0"
   },
   "testling": {
     "files": "test/*.js",
