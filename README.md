@@ -1,11 +1,11 @@
 # Funkalicious
 
-[![view on npm](http://img.shields.io/npm/v/funcalicious.svg)](https://www.npmjs.org/package/funcalicious)
-[![build status](https://secure.travis-ci.org/nikcorg/funcalicious.png)](http://travis-ci.org/nikcorg/funcalicious)
-[![Code Climate](https://codeclimate.com/github/nikcorg/funcalicious/badges/gpa.svg)](https://codeclimate.com/github/nikcorg/funcalicious)
-[![Dependencies](https://david-dm.org/nikcorg/funcalicious.svg?style=flat)](https://david-dm.org/nikcorg/funcalicious)
+[![view on npm](//img.shields.io/npm/v/funcalicious.svg)](//www.npmjs.org/package/funcalicious)
+[![build status](//secure.travis-ci.org/nikcorg/funcalicious.png)](//travis-ci.org/nikcorg/funcalicious)
+[![Code Climate](//codeclimate.com/github/nikcorg/funcalicious/badges/gpa.svg)](//codeclimate.com/github/nikcorg/funcalicious)
+[![Dependencies](//david-dm.org/nikcorg/funcalicious.svg?style=flat)](//david-dm.org/nikcorg/funcalicious)
 
-[![testling badge](https://ci.testling.com/nikcorg/funcalicious.png)](https://ci.testling.com/nikcorg/funcalicious)
+[![testling badge](//ci.testling.com/nikcorg/funcalicious.png)](//ci.testling.com/nikcorg/funcalicious)
 
 ## Funky projects
 
