@@ -1,15 +1,10 @@
-var test = require("tape");
-var always = require("../always");
+import test from "tape";
+import { always } from "../src/always";
 
-test("always", function (t) {
+test("always", t => {
     t.test("exports function", function (t) {
         t.plan(1);
         t.equal(typeof always, "function");
-    });
-
-    t.test("exports redundant api", function (t) {
-        t.plan(1);
-        t.ok(always.always == always);
     });
 
     t.test("returns function", function (t) {
@@ -20,8 +15,8 @@ test("always", function (t) {
     t.test("always returns input", function (t) {
         t.plan(3);
 
-        var rand = Math.random() * 9999;
-        var rval = always(rand);
+        const rand = Math.random() * 9999;
+        const rval = always(rand);
 
         t.equal(rval("foo"), rand);
         t.equal(rval(-42), rand);
