@@ -1,29 +1,20 @@
-var test = require("tape");
-var not = require("../not");
+import test from "tape";
+import { not } from "../src/not";
 
-test("not", function (t) {
-    t.test("exports function", function (t) {
+test("not", t => {
+    t.test("exports function", t => {
         t.plan(1);
         t.equal(typeof not, "function", "exports function");
     });
 
-    t.test("exports redundant api", function (t) {
-        t.plan(1);
-        t.ok(not.not === not);
-    });
-
-    t.test("returns function", function (t) {
+    t.test("returns function", t => {
         t.plan(1);
         t.equal(typeof not(), "function");
     });
 
-    t.test(function (t) {
+    t.test(t => {
         t.plan(2);
-
-        function rtrue() {
-            return true;
-        }
-
+        const rtrue = () => true;
         t.notOk(not(rtrue)());
         t.ok(not(not(rtrue))());
     });
