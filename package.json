@@ -6,7 +6,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "babel-tape-runner test/**.js"
+    "test": "babel-tape-runner test/**.js",
+    "build": "mkdir -p lib && find src -name \"*.js\" -exec sh -c 'babel {} > lib/$(basename {})' \\;"
   },
   "repository": {
     "type": "git",
