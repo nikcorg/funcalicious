@@ -1,27 +1,22 @@
-var test = require("tape");
-var rand = require("../randomize");
+import test from "tape";
+import { randomize} from "../src/randomize";
 
-test("randomize", function (t) {
-    t.test("exports function", function (t) {
+test("randomize", t => {
+    t.test("exports function", t => {
         t.plan(1);
-        t.equal(typeof rand, "function");
+        t.equal(typeof randomize, "function");
     });
 
-    t.test("exports redundant api", function (t) {
-        t.plan(1);
-        t.ok(rand.randomize === rand);
-    });
-
-    t.test("simple random", function (t) {
+    t.test("simple random", t => {
         t.plan(2);
-        var r = rand(100);
+        const r = randomize(100);
         t.notOk(isNaN(r));
         t.ok(r >= 0 && r < 100);
     });
 
-    t.test("stepped random", function (t) {
+    t.test("stepped random", t => {
         t.plan(3);
-        var r = rand(100, 20);
+        const r = randomize(100, 20);
         t.notOk(isNaN(r));
         t.ok(r % 20 === 0);
         t.ok(r >= 0 && r < 100);
