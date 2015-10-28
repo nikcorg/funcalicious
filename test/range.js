@@ -1,15 +1,10 @@
-var test = require("tape");
-var range = require("../range");
+import test from "tape";
+import { range } from "../src/range";
 
 test("range", function (t) {
     t.test("exports", function (t) {
         t.plan(1);
         t.equal(typeof range, "function", "exports function");
-    });
-
-    t.test("exports redundant api", function (t) {
-        t.plan(1);
-        t.ok(range.range === range);
     });
 
     t.test("from zero", function (t) {
