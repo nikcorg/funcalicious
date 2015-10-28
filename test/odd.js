@@ -1,23 +1,18 @@
-var test = require("tape");
-var odd = require("../odd");
+import test from "tape";
+import { odd } from "../src/odd";
 
-test("odd", function (t) {
-    t.test("exports function", function (t) {
+test("odd", t => {
+    t.test("exports function", t => {
         t.plan(1);
         t.equal(typeof odd, "function");
     });
 
-    t.test("exports redundant api", function (t) {
-        t.plan(1);
-        t.ok(odd.odd = odd);
-    });
-
-    t.test("matches odd number", function (t) {
+    t.test("matches odd number", t => {
         t.plan(1);
         t.ok(odd(1));
     });
 
-    t.test("fails even numbers", function (t) {
+    t.test("fails even numbers", t => {
         t.plan(1);
         t.notOk(odd(2));
     });
