@@ -1,37 +1,37 @@
-var test = require("tape");
-var sinon = require("sinon");
-var put = require("../put");
+import test from "tape";
+import sinon from "sinon";
+import { put } from "../src/put";
 
-test("put", function (t) {
-    t.test("exports function", function (t) {
+test("put", t => {
+    t.test("exports function", t => {
         t.plan(1);
         t.equal(typeof put, "function", "exports function");
     });
 
-    t.test("exports redundant api", function (t) {
-        t.plan(1);
-        t.ok(put.put === put);
-    });
-
-    t.test("returns function", function (t) {
+    t.test("returns function", t => {
         t.plan(1);
         t.equal(typeof put(), "function");
     });
 
-    t.test("assigns property to input", function (t) {
-        t.plan(1);
-        var putter = put("foo", "bar");
-        var baz = {};
-        putter(baz);
-        t.equal(baz.foo, "bar");
+    t.test("does not mutate input", t => {
+        t.plan(3);
+        const putter = put("foo", "bar");
+        const input = {};
+        const altered = putter(input);
+        t.notEqual(input, altered, "returns new object");
+        t.notOk(input.hasOwnProperty("foo"));
+        t.equal(altered.foo, "bar", "output has new property");
     });
 
-    t.test("accepts function as value", function (t) {
-        t.plan(2);
-        var stub = sinon.stub().returns(42);
-        var putter = put("meaningOfLifeTheUniverseAndEverything", stub);
+    t.test("accepts function as value", t => {
+        t.plan(3);
 
-        t.equal(putter({}).meaningOfLifeTheUniverseAndEverything, 42);
-        t.ok(stub.calledOnce, "function was called");
+        const stub = sinon.stub().returns(42);
+        const putter = put("meaningOfLifeTheUniverseAndEverything", stub);
+        const output = putter({});
+
+        t.ok(output.hasOwnProperty("meaningOfLifeTheUniverseAndEverything"), "has property");
+        t.equal(output.meaningOfLifeTheUniverseAndEverything, 42);
+        t.equal(stub.callCount, 1, "function was called");
     });
 });
