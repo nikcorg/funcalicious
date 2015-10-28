@@ -1,18 +1,13 @@
-var test = require("tape");
-var sign = require("../sign");
+import test from "tape";
+import { sign } from "../src/sign";
 
-test("sign", function (t) {
-    t.test("exports", function (t) {
+test("sign", t => {
+    t.test("exports", t => {
         t.plan(1);
         t.equal(typeof sign, "function", "exports function");
     });
 
-    t.test("exports redundant api", function (t) {
-        t.plan(1);
-        t.ok(sign.sign === sign);
-    });
-
-    t.test("returns sign", function (t) {
+    t.test("returns sign", t => {
         t.plan(5);
         t.equal(0, sign("fubar"), "NaN returns zero");
         t.equal(-1, sign(-300), "negative return -1");

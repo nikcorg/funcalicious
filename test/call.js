@@ -1,27 +1,22 @@
-var test = require("tape");
-var sinon = require("sinon");
-var call = require("../call");
+import test from "tape";
+import sinon from "sinon";
+import { call } from "../src/call";
 
-test("call", function (t) {
-    t.test("exports function", function (t) {
+test("call", t => {
+    t.test("exports function", t => {
         t.plan(1);
         t.equal(typeof call, "function");
     });
 
-    t.test("exports redundant api", function (t) {
-        t.plan(1);
-        t.ok(call.call === call);
-    });
-
-    t.test("returns function", function (t) {
+    t.test("returns function", t => {
         t.plan(2);
         t.equal(typeof call("foo"), "function");
         t.equal(typeof call(sinon.spy()), "function");
     });
 
-    t.test("invokes method", function (t) {
+    t.test("invokes method", t => {
         t.plan(1);
-        var c = call("foo");
+        const c = call("foo");
         c({
             "foo": function () {
                 t.pass("method was invoked");
@@ -29,9 +24,9 @@ test("call", function (t) {
         });
     });
 
-    t.test("passes in arguments", function (t) {
+    t.test("passes in arguments", t => {
         t.plan(2);
-        var c = call("foo", "bar", "baz");
+        const c = call("foo", "bar", "baz");
         c({
             "foo": function (a1, a2) {
                 t.equal(a1, "bar");
@@ -40,30 +35,30 @@ test("call", function (t) {
         });
     });
 
-    t.test("calls function", function (t) {
+    t.test("calls function", t => {
         t.plan(1);
-        var fn = sinon.spy();
+        const fn = sinon.spy();
         call(fn)();
         t.ok(fn.calledOnce);
     });
 
-    t.test("function receives fixed arguments", function (t) {
+    t.test("function receives fixed arguments", t => {
         t.plan(1);
-        var fn = sinon.spy();
+        const fn = sinon.spy();
         call(fn, 1, 2)();
         t.ok(fn.calledWith(1, 2));
     });
 
-    t.test("function receives call time arguments", function (t) {
+    t.test("function receives call time arguments", t => {
         t.plan(1);
-        var fn = sinon.spy();
+        const fn = sinon.spy();
         call(fn)(3, 4);
         t.ok(fn.calledWith(3, 4));
     });
 
-    t.test("function receives merged arguments", function (t) {
+    t.test("function receives merged arguments", t => {
         t.plan(1);
-        var fn = sinon.spy();
+        const fn = sinon.spy();
         call(fn, 1, 2)(3, 4);
         t.ok(fn.calledWith(1, 2, 3, 4));
     });

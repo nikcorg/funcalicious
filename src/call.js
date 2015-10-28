@@ -1,26 +1,8 @@
-"use strict";
-
-var toarray = require("./toarray");
-
-module.exports = call.call = call;
-
-function call(fn) {
-    var args = toarray(arguments).slice(1);
-
-    if (typeof fn === "string") {
-        return callMethod(fn, args);
-    }
-
-    return callFunction(fn, args);
-}
-
-function callFunction(fn, _args) {
-    return function () {
-        var args = toarray(arguments).slice(0);
-
+const callFunction = (fn, fixedArgs) => {
+    return (...args) => {
         // Prepend fixed args when present
-        if (_args && _args.length > 0) {
-            args = _args.concat(args);
+        if (fixedArgs && fixedArgs.length > 0) {
+            args = [...fixedArgs, ...args];
         }
 
         switch (args.length) {
@@ -36,13 +18,13 @@ function callFunction(fn, _args) {
                 return fn();
         }
 
-        return fn.apply(undefined, args);
+        return fn(...args);
     };
 }
 
-function callMethod(method, args) {
+const callMethod = (method, args) => {
     if (args.length > 0) {
-        return function (o) {
+        return o => {
             switch (args.length) {
                 case 4:
                     return o[method](args[0], args[1], args[2], args[3]);
@@ -54,12 +36,20 @@ function callMethod(method, args) {
                     return o[method](args[0]);
             }
 
-            return o[method].apply(o, args);
+            return o[method](...args);
         };
     }
 
-    return function (o) {
+    return o => {
         return o[method]();
     };
+}
+
+export const call = (fn, ...args) => {
+    if (typeof fn === "string") {
+        return callMethod(fn, args);
+    }
+
+    return callFunction(fn, args);
 }
 

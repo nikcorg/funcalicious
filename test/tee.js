@@ -1,28 +1,23 @@
-var test = require("tape");
-var sinon = require("sinon");
-var tee = require("../tee");
+import test from "tape";
+import sinon from "sinon";
+import { tee } from "../src/tee";
 
-test("tee", function (t) {
-    t.test("exports function", function (t) {
+test("tee", t => {
+    t.test("exports function", t => {
         t.plan(1);
         t.equal(typeof tee, "function");
     });
 
-    t.test("exports redundant api", function (t) {
-        t.plan(1);
-        t.ok(tee.tee === tee);
-    });
-
-    t.test("returns function", function (t) {
+    t.test("returns function", t => {
         t.plan(1);
         t.equal(typeof tee(), "function");
     });
 
-    t.test("calls all functions", function (t) {
+    t.test("calls all functions", t => {
         t.plan(2);
 
-        var fst = sinon.spy();
-        var snd = sinon.spy();
+        const fst = sinon.spy();
+        const snd = sinon.spy();
 
         tee(fst, snd)(null);
 
@@ -30,12 +25,12 @@ test("tee", function (t) {
         t.ok(snd.calledOnce);
     });
 
-    t.test("all functions receive same input", function (t) {
+    t.test("all functions receive same input", t => {
         t.plan(2);
 
-        var fst = sinon.spy();
-        var snd = sinon.spy();
-        var inp = "input";
+        const fst = sinon.spy();
+        const snd = sinon.spy();
+        const inp = "input";
 
         tee(fst, snd)(inp);
 

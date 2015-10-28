@@ -1,12 +1,13 @@
 {
   "name": "funcalicious",
-  "version": "0.4.1",
+  "version": "1.0.0",
   "description": "Funcalicious, because it functional, funky and delicious.",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "tape test/**.js"
+    "test": "babel-tape-runner test/**.js",
+    "build": "mkdir -p lib && find src -name \"*.js\" -exec sh -c 'babel {} > lib/$(basename {})' \\;"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,8 @@
   },
   "homepage": "https://github.com/nikcorg/funcalicious",
   "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-tape-runner": "^1.2.0",
     "sinon": "^1.14.1",
     "tape": "^4.0.0"
   },

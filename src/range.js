@@ -1,12 +1,10 @@
-"use strict";
+import debug from "debug";
+import { sign } from "./sign";
 
-var debug = require("debug")("funcalicious:range");
-var sign = require("./sign");
+const log = debug("funcalicious:range");
 
-module.exports = range.range = range;
-
-function range(from, to, step) {
-    var steps;
+export const range = (from, to, step) => {
+    let steps;
 
     if (undefined == to) {
         to = from;
@@ -22,7 +20,7 @@ function range(from, to, step) {
 
     // Make sure range direction matches step sign
     if (sign(to - from) !== sign(step)) {
-        throw new Error("Step does not match range direction");
+        throw new Error("Expected step to match range direction");
     }
 
     steps = Math.abs(to - from) / Math.abs(step);
@@ -32,13 +30,9 @@ function range(from, to, step) {
         throw new Error("Invalid step increase for range");
     }
 
-    debug("from %d to %d (%d) step %d = %d steps", from, to, Math.abs(to - from), step, steps);
+    log("from %d to %d (%d) step %d = %d steps", from, to, Math.abs(to - from), step, steps);
 
-    return Array.apply(Array, Array(steps)).
-        map(function (_, i) {
-            return from + i * step;
-        });
-}
-
+    return Array(...Array(steps)).map((_, i) => from + i * step);
+};
 
 
